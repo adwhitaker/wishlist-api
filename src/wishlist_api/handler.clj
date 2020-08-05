@@ -3,9 +3,11 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
+(defn uuid [] (str (java.util.UUID/randomUUID)))
+
 (defroutes app-routes
   (GET "/" [] "Hello World")
-  (GET "/:id" [id] (str "Hello " id))
+  (GET "/:id" [id] (uuid))
   (route/not-found "Not Found"))
 
 (def app
